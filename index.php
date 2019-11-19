@@ -160,7 +160,7 @@ if (mysqli_connect_errno()) {
 		<option value="cheshil.com">cheshil.com</option>
 	</select><br>
 	Destination<br>
-	<input type="text" name="destination" value="userjack6880@gmail.com"><br>
+	<input type="text" name="destination" value="john@anomaly-atl"><br>
 	Random<br>
 	<input type="checkbox" name="generate" value="1"><br>
 	<input type="submit" value="Submit">
@@ -202,7 +202,7 @@ function display_alias($result) {
 			<a href="delete.php?id=<?php echo $row['id']; ?>"><img src="delete.png"></a>
 			| <strong><?php echo $row['comment']; ?></strong><br>
 			<strong>Alias: </strong><?php echo $row['source']; ?><br>
-			<em><?php echo $row['destination']; ?></em></p>
+			<em><?php echo (strpos($row['destination'],'anomaly-atl') ? strtok($row['destination'], '@') : $row['destination']); ?></em></p>
 	<?php
 	}
 }
@@ -263,7 +263,7 @@ while($row = $result->fetch_array()) {
 
 		<p><strong><?php echo $row['comment']; ?></strong><br>
 		<strong>Alias: </strong><?php echo $row['source']; ?><br>
-		<em><?php echo $row['destination']; ?></em></p>
+		<em><?php echo (strpos($row['destination'],'anomaly-atl') ? strtok($row['destination'], '@') : $row['destination']); ?></em></p>
 
 <?php
 }
