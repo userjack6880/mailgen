@@ -1,3 +1,27 @@
+<?php
+/*
+SA Mail Alias Generator
+config.php
+2022 - John Bradley (userjack6880)
+
+Available at: https://github.com/userjack6880/mailgen
+
+This file is part of the SA Mail Alias Generator
+
+The SA Mail Alias Generator is free software: you can redistribute it and/or
+modify it under the terms of the GNU General Public License as published by the 
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+*/
+?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,6 +43,27 @@
 			.two-col {
 				column-count: 2;
 				text-align: left;
+			}
+			#footer {
+				width: 948px;
+				margin: 0 auto;
+				color: #999;
+			}
+			a:link {
+				text-decoration: none;
+				color: #CCC;
+			}
+			a:visited {
+				text-decoration: none;
+				color: #CCC;
+			}
+			a:active {
+				text-decoration: none;
+				color: #FFF;
+			}
+			a:hover {
+				text-decoration: none;
+				color: #FFF;
 			}
 			input[type=text], input[type=url], input[type=email], input[type=password], input[type=tel] {
 				-webkit-appearance: none; 
@@ -69,6 +114,11 @@
 				.two-col {
 					column-count: 1;
 					text-align: center;
+				}
+				#footer {
+					width: 100%;
+					margin: 0;
+					padding: 0;
 				}
 				.form {
 					width: 100%;
@@ -155,12 +205,14 @@ if (mysqli_connect_errno()) {
 	<input type="text" name="source"><br>
 	Domain<br>
 	<select name="domain">
-		<option value="j3b.in">j3b.in</option>
-		<option value="systemanomaly.com">systemanomaly.com</option>
-		<option value="cheshil.com">cheshil.com</option>
+<?php
+foreach ($domains as &$domain) {
+?>
+		<option value="<?php echo $domain; ?>"><?php echo $domain; ?></option>
+<?php } ?>
 	</select><br>
 	Destination<br>
-	<input type="text" name="destination" value="john@anomaly-atl"><br>
+	<input type="text" name="destination" value="<?php echo $default; ?>"><br>
 	Random<br>
 	<input type="checkbox" name="generate" value="1"><br>
 	<input type="submit" value="Submit">
@@ -211,40 +263,20 @@ function display_alias($result) {
 
 <h1>Active Emails</h1>
 
-<h2>systemanomaly.com</h2>
+<?php
+foreach ($domains as &$domain) {
+?><h2><?php echo $domain; ?></h2>
 <div class="two-col">
 <?php
-$sql = "SELECT * FROM `virtual_aliases` WHERE `valid` = 1 AND `source` LIKE '%@systemanomaly.com' ORDER BY `comment` ASC";
+$sql = "SELECT * FROM `virtual_aliases` WHERE `valid` = 1 AND `source` LIKE '%@$domain' ORDER BY `comment` ASC";
 
 $result = $mysql->query($sql);
 
 display_alias($result);
 ?>
 </div>
-
-<h2>j3b.in</h2>
-<div class="two-col">
 <?php
-$sql = "SELECT * FROM `virtual_aliases` where `valid` = 1 and `source` LIKE '%@j3b.in' ORDER BY `comment` ASC";
-
-$result = $mysql->query($sql);
-
-display_alias($result);
-?>
-</div>
-
-<h2>cheshil.com</h2>
-<div class="two-col">
-<?php
-$sql = "SELECT * FROM `virtual_aliases` where `valid` = 1 and `source` LIKE '%@cheshil.com' ORDER BY `comment` ASC";
-
-$result = $mysql->query($sql);
-
-display_alias($result);
-?>
-</div>
-
-<?php
+}
 
 # List Deactivated Aliases
 
@@ -276,6 +308,9 @@ while($row = $result->fetch_array()) {
 $mysql->close();
 ?>
 
+		</div>
+		<div id="footer">
+			SA Mail Alias Generator <a href="https://github.com/userjack6880/mailgen"><?php echo VERSION; ?></a>
 		</div>
 	</body>
 </html>

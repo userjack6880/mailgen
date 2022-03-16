@@ -1,4 +1,27 @@
 <?php
+/*
+SA Mail Alias Generator
+config.php
+2022 - John Bradley (userjack6880)
+
+Available at: https://github.com/userjack6880/mailgen
+
+This file is part of the SA Mail Alias Generator
+
+The SA Mail Alias Generator is free software: you can redistribute it and/or 
+modify it under the terms of the GNU General Public License as published by the 
+Free Software Foundation, either version 3 of the License, or (at your option)
+any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along with
+this program. If not, see <https://www.gnu.org/licenses/>.
+*/
+
+
 /**
  * MySQL Settings
  */
@@ -9,4 +32,17 @@ define('DB_PASSWORD', '');
 define('DB_HOST', 'localhost');
 define('DB_CHARSET', 'utf8');
 define('DB_COLLATE', '');
+
+/**
+ * Domain Settings
+ */
+
+$domains = array("domain1.com",
+                 "domain2.com");
+$default = "default@hostname";
+
+/**
+ * MISC
+ */
+define('VERSION', '0-&beta;1');
 ?>
