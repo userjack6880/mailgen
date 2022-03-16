@@ -7,9 +7,10 @@ No warranty, use as is, I suggest hiding this in a password-protected directory.
 # System Requirements
 
 - httpd service (tested Apache 2.4.52)
-- PHP 5.4+ (tested 7.4.25)
-- mySQL 15.1+ or equivalent (tested MariaDB 10.5.12)
-- Postfix (tested 3.5.6)
+- php 5.4+ (tested 7.4.25)
+- mysql 15.1+ or equivalent (tested MariaDB 10.5.12)
+- postfix (tested 3.5.6)
+- postifx-mysql (tested 3.5.6)
 
 # Installation
 
