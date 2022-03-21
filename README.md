@@ -42,6 +42,6 @@ Restart postifx.
 
 # Latest Changes
 
-## 0-β1
+## 1-β1
 
-- First official release. Mostly feature complete.
+- Conformed versioning to new standard.

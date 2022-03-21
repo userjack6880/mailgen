@@ -44,5 +44,5 @@ $default = "default@hostname";
 /**
  * MISC
  */
-define('VERSION', '0-&beta;1');
+define('VERSION', '1-&beta;1');
 ?>
