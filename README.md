@@ -42,6 +42,6 @@ Restart postifx.
 
 # Latest Changes
 
-## 1-β1
+## 1-β2
 
-- Conformed versioning to new standard.
+- Fixed delete bug.

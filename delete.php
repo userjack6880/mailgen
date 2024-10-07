@@ -169,7 +169,7 @@ this program. If not, see <https://www.gnu.org/licenses/>.
 include_once 'config.php';
 
 # Open MySQL Connection
-$mysql = new mysqli('localhost', DB_USER, DB_PASSWORD, DB_NAME);
+$mysql = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
 if (mysqli_connect_errno()) {
 	die("Could not connect: ".mysqli_connect_error());
 }
